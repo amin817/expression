@@ -108,3 +108,34 @@ capitan.login_user("capitan")
 print("--------part5--------------")
 
 amin.login_user("amin")
+
+
+
+
+
+
+
+
+
+
+
+
+
+#--------------------------------------------------------------
+
+
+
+
+
+name = ""
+    wheels = 0
+    speed = 0
+    color = ""
+
+    def __init__(self):
+        print("self in Vehicle class")
+
+
+    def move(self):
+        print("move in Vehicle class")
+

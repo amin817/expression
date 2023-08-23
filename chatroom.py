@@ -7,15 +7,19 @@ class ChatRoom:
     onlineUser = 0
     allUserList = []
     onlineUserList = []
-    notAllowUserList = ["hacker","ronaldo","elon mask","amin",""]
+    notAllowUserList = ["hacker","ronaldo","elon mask","amin","ali"]
 
     def __init__(self,nickname):
-        self.nickname = nickname
-        ChatRoom.allUser += 1
-        ChatRoom.onlineUser += 1
-        print(f"welcome chatroom app {self.nickname} -- all users : {ChatRoom.allUser}")
-        ChatRoom.allUserList.append(self.nickname)
-        ChatRoom.onlineUserList.append(self.nickname)
+        
+        if nickname not in ChatRoom.notAllowUserList:
+            self.nickname = nickname
+            ChatRoom.allUser += 1
+            ChatRoom.onlineUser += 1
+            print(f"welcome chatroom app {self.nickname} -- all users : {ChatRoom.allUser}")
+            ChatRoom.allUserList.append(self.nickname)
+            ChatRoom.onlineUserList.append(self.nickname)
+        else:
+            print(f"you cant login to app my friend {nickname}")
 
 
     def delete_account(self):
@@ -26,8 +30,11 @@ class ChatRoom:
         print(f"good bye {self.nickname}")
 
 
-    def login_user(self):
-        if self.nickname in ChatRoom.allUserList:
+    def login_user(self,name):
+        if name in ChatRoom.notAllowUserList:
+            print(f"you cant login to app my friend {name}")
+
+        elif self.nickname in ChatRoom.allUserList:
             ChatRoom.onlineUser += 1
             print(f"welcome chatroom app {self.nickname} -- all users : {ChatRoom.allUser} online users {self.onlineUser}")
             ChatRoom.onlineUserList.append(self.nickname)
@@ -63,7 +70,6 @@ class ChatRoom:
         print(f"good luck {self.nickname}")
 
         
-
 mohammadjavad = ChatRoom("mohammad javad")
 reza = ChatRoom("reza")
 elia = ChatRoom("elia")
@@ -88,7 +94,7 @@ reza.logOut()
 
 capitan.logOut()
 
-amin.delete_account()
+amin.login_user("amin")
 
 print("--------part3--------------")
 
@@ -97,8 +103,8 @@ eisa.show_online_users()
 
 print("--------part4--------------")
 
-capitan.login_user()
+capitan.login_user("capitan")
 
 print("--------part5--------------")
 
-amin.login_user()
+amin.login_user("amin")
